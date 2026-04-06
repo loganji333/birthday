@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Ilsa ❤️ — My Batman</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Inter:wght@300;400;500;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+<!-- ══════════════════════════════ CUSTOM CURSOR -->
+<!-- ══════════════════════════════ BIRTHDAY CAKE REVEAL (TIME 0) -->
+<div id="cake-reveal-screen" class="hidden">
+  <div class="cake-container">
+    <div class="cake-glow"></div>
+    <div class="the-cake">
+       <div class="layer layer-bottom"></div>
+       <div class="layer layer-middle"></div>
+       <div class="layer layer-top"></div>
+       <div class="candle">
+         <div class="flame" id="cake-flame"></div>
+       </div>
+    </div>
+    <h1 class="cake-title">HAPPY BIRTHDAY ILSA! 🎂</h1>
+    <p class="cake-sub">Make a wish and click the flame.</p>
+  </div>
+</div>
+
+<div id="cursor-glow"></div>
+<div id="cursor-dot"></div>
+
+<!-- ══════════════════════════════ PULL CORD PARTY POPPER -->
+<div class="pull-cord-container" id="pull-cord" onclick="triggerPullCord()">
+  <div class="cord-string"></div>
+  <div class="cord-handle">🎉 Pull</div>
+</div>
+
+<!-- ══════════════════════════════ BIRTHDAY CAKE REVEAL (TIME 0) -->
+<div id="cake-reveal-screen" class="hidden">
+  <div class="cake-container">
+    <div class="cake-glow"></div>
+    <div class="the-cake">
+       <div class="layer layer-bottom"></div>
+       <div class="layer layer-middle"></div>
+       <div class="layer layer-top"></div>
+       <div class="candle">
+         <div class="flame" id="cake-flame" onclick="blowCandle()"></div>
+       </div>
+    </div>
+    <h1 class="cake-title">HAPPY BIRTHDAY ILSA! 🎂</h1>
+    <p class="cake-sub">Make a wish and click the flame.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ ENTRY GATE (Solves AutoPlay) -->
+<div id="entry-gate">
+  <div class="entry-content">
+    <div class="entry-icon">🎁</div>
+    <h1 class="entry-title">A Gift For Ilsa</h1>
+    <p class="entry-sub">Turn your volume up</p>
+    <button class="btn-enter" onclick="enterSite()">Tap to Unwrap ✨</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ BATS LAYER -->
+<div id="bats-layer" aria-hidden="true"></div>
+
+<!-- ══════════════════════════════ BIG BACKGROUND BATMAN LOGO -->
+<div id="bg-batman-logo-container">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 150" class="bg-batman-svg">
+    <path d="M117.8,32.4 c-4.1-1.3-9-4-11.2-6l-4-3.8l-1.9,6.7 c-1.6,6-3.8,11.2-5.9,13.8l-3.2,4.1l-6-3.4 c-8.5-4.8-19.6-7-29.2-5.8 c-10,1.3-20.9,5.7-30.1,12.3 c-4.9,3.5-12.7,11-16.1,15.6c-4.4,5.9-8.5,15.4-8.7,20.2 c-0.1,2.8,0.3,3.7,1.8,4.1c1.5,0.4,1.8,0.2,2.8-1.5 c4.3-7.5,14.6-13,27.1-14.4c5.3-0.6,9.6-0.3,13.5,0.9 c6.1,1.9,9.4,5.3,13.9,14.3c2.7,5.5,3.3,7.4,4.2,14.1 c0.8,6,1,6.5,2.7,8.6c1.6,2,2.3,2.3,4,1.9 c1.2-0.3,2.1-1,2.9-2.3c0.8-1.4,1.3-3.6,1.4-6 c0.2-2.6,0.6-4.9,0.9-5.7c1-2.4,5-7.1,7.2-8.5 c2.7-1.6,4.6-2,9.3-2c4.8,0,6.7,0.4,9.4,2c2.1,1.3,6,6.1,7,8.5 c0.4,0.8,0.8,3.1,0.9,5.7c0.2,2.4,0.6,4.6,1.4,6 c0.8,1.3,1.7,2,2.9,2.3c1.7,0.4,2.4,0.1,4-1.9 c1.7-2.1,1.9-2.6,2.7-8.6c0.9-6.7,1.5-8.6,4.2-14.1 c4.5-9,7.8-12.4,13.9-14.3c3.9-1.2,8.2-1.5,13.5-0.9 c12.5,1.4,22.8,6.9,27.1,14.4c1,1.7,1.3,1.9,2.8,1.5 c1.5-0.4,1.9-1.3,1.8-4.1c-0.2-4.8-4.3-14.3-8.7-20.2 c-3.4-4.6-11.2-12.1-16.1-15.6c-9.2-6.6-20.1-11-30.1-12.3 c-9.6-1.2-20.7,1-29.2,5.8l-6,3.4l-3.2-4.1 c-2.1-2.6-4.3-7.8-5.9-13.8l-1.9-6.7l-4,3.8 C126.8,28.4,121.9,31.1,117.8,32.4z" fill="#ffffff"/>
+  </svg>
+</div>
+
+<!-- ══════════════════════════════ LOADING SCREEN -->
+<div id="loading-screen" class="hidden">
+  <canvas id="loader-snow"></canvas>
+  <div class="loader-content">
+    <div class="bat-loader">🦇</div>
+    <p class="loader-name">Ilsa Shafi</p>
+    <p class="loader-batman">my batman ✨</p>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+    <p class="loader-msg">Something magical is loading…</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ MUSIC PLAYER -->
+<div id="music-btn" onclick="toggleMusic()" title="Toggle Music">
+  <span id="music-icon">♪</span>
+  <span id="music-label">Music</span>
+  <div class="music-waves"><span></span><span></span><span></span><span></span></div>
+</div>
+<audio id="bg-music" loop preload="auto">
+  <source src="bg.mp3" type="audio/mpeg" />
+</audio>
+
+<!-- ══════════════════════════════ VIDEO EDIT INTENSE MUSIC -->
+<audio id="cinema-music" preload="auto">
+  <source src="presto.mp3" type="audio/mpeg" />
+</audio>
+
+<!-- ══════════════════════════════ SNOW CANVAS -->
+<canvas id="snow-canvas"></canvas>
+
+<!-- ══════════════════════════════ SECTION 1: HERO -->
+<section id="hero">
+  <div class="star-field" id="stars"></div>
+  <div class="hero-glow"></div>
+  <div class="balloons-container" id="balloons"></div>
+  <div class="hero-content">
+    <div class="hero-batman-badge">🦇 for my batman 🦇</div>
+    <div class="hero-date">April 8, 2005 · Kashmir, India</div>
+    <h1 class="hero-title">Happy Birthday<br/><span class="hero-name">Ilsa Shafi</span></h1>
+    <p class="hero-sub">My absolute best friend in the whole world 🦇</p>
+    <button class="btn-start" onclick="startJourney()">
+      <span>✨ Start the Journey</span>
+      <div class="btn-ripple"></div>
+    </button>
+
+    <div class="bat-signal-wrapper">
+      <button class="btn-batsignal" onclick="toggleBatSignal()" id="btn-batsignal">🦇 Activate Bat-Signal</button>
+    </div>
+    
+    <!-- COUNTDOWN TIMER -->
+    <div class="countdown-container" id="countdown-container">
+       <div class="cd-box"><span id="cd-days">00</span><p>Days</p></div>
+       <div class="cd-box"><span id="cd-hours">00</span><p>Hours</p></div>
+       <div class="cd-box"><span id="cd-mins">00</span><p>Mins</p></div>
+       <div class="cd-box"><span id="cd-secs">00</span><p>Secs</p></div>
+    </div>
+  </div>
+  <div class="scroll-hint">↓</div>
+</section>
+
+<!-- ══════════════════════════════ SECTION 2: MESSAGE -->
+<section id="message-section" class="reveal-section">
+  <div class="section-wrapper">
+    <div class="letter-card">
+      <div class="letter-seal">❤</div>
+      <h2 class="section-title">A Letter For You</h2>
+      <div class="letter-body">
+        <p id="typed-text" class="typed-letter"></p>
+        <span class="cursor-blink">|</span>
+      </div>
+      <div class="letter-signature">— With all my heart 🕊️</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ SECTION 3: CHILDHOOD -->
+<section id="childhood-section" class="reveal-section">
+  <div class="section-wrapper">
+    <h2 class="section-title gold-glow">Little Batman 🦇</h2>
+    <p class="section-sub">Before the world even knew how special you'd become…</p>
+    <div class="childhood-reveal">
+      <div class="film-strip"><div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div></div>
+      <div class="childhood-center">
+        <div class="baby-card">
+          <div class="baby-card-glow"></div>
+          <div class="baby-old-label">Circa ~ 2006</div>
+          <div class="baby-photo-wrap">
+            <img src="photos/childhood.png" alt="Little Ilsa" class="baby-photo" />
+            <div class="baby-sparkles">
+              <span class="sparkle s1">✨</span><span class="sparkle s2">⭐</span><span class="sparkle s3">💫</span>
+            </div>
+          </div>
+          <p class="baby-caption">Little Ilsa — already wearing Kashmir on her head 🧢</p>
+          <p class="baby-subcaption">"Those big eyes already held the whole world."</p>
+        </div>
+        <div class="then-now-container">
+          <div class="then-now-card thencard">
+            <div class="tn-label">Then 🕰️</div>
+            <img src="photos/childhood.png" alt="Then" class="tn-img" />
+            <p class="tn-caption">A tiny star in Kashmir ❄️</p>
+          </div>
+          <div class="then-now-divider">
+            <div class="arrow-line"></div><span class="now-badge">✨ GLOW UP ✨</span><div class="arrow-line"></div>
+          </div>
+          <div class="then-now-card nowcard">
+            <div class="tn-label">Now 🌸</div>
+            <img src="photos/photo1.jpg" alt="Now" class="tn-img" />
+            <p class="tn-caption">Absolutely radiant 💖</p>
+          </div>
+        </div>
+      </div>
+      <div class="film-strip right"><div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div></div>
+    </div>
+    <div class="childhood-facts">
+      <div class="fact-bubble" data-aos="zoom-in"><span class="fact-icon">🧢</span><p>That red cap? Fashion icon material.</p></div>
+      <div class="fact-bubble" data-aos="zoom-in" data-delay="150"><span class="fact-icon">👀</span><p>Eyes holding a whole universe.</p></div>
+      <div class="fact-bubble" data-aos="zoom-in" data-delay="300"><span class="fact-icon">🦇</span><p>Destined to be called Batman.</p></div>
+      <div class="fact-bubble" data-aos="zoom-in" data-delay="450"><span class="fact-icon">❄️</span><p>Born in paradise.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ SECTION 3.5: SCRATCH CARD -->
+<section id="scratch-section" class="reveal-section">
+  <div class="section-wrapper center-content">
+    <h2 class="section-title gold-glow">Scratch to Reveal 🎟️</h2>
+    <p class="section-sub">Use your finger or mouse to scratch away the gold foil.</p>
+    
+    <div class="scratch-container" id="scratch-container">
+      <div class="scratch-underlay">
+        <h3>The Honest Truth 🤫</h3>
+        <p>You are my absolute favorite person, my best friend, and my Batman forever. I will always be here for you, no matter what. 🦇✨</p>
+      </div>
+      <canvas id="scratch-canvas"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ SECTION 4: CINEMATIC REEL (THE NEW VIDEO EDIT LOGIC) -->
+<section id="cinema-intro-section" class="reveal-section">
+  <div class="section-wrapper center-content">
+    <h2 class="section-title gold-glow">Not Just Memories... Music Video Edit</h2>
+    <p class="section-sub">You asked for intense creativity so I made a cinematic video montage, coded purely using ultra-fast CSS animations. Prepare yourself, Batman. (Warning: Flash effects included)</p>
+    
+    <div class="cinema-trigger-card">
+      <div class="cinema-trigger-glow"></div>
+      <h3>🎬 The Kashmir Batman Cut</h3>
+      <p>Length: 10 Seconds | Style: High Speed Cinematic</p>
+      <button class="btn-play-cinema" onclick="playCinematicEdit()">▶ PLAY VIDEO</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ SECTION 5: GALLERY (Classic fallback) -->
+<section id="gallery-section" class="reveal-section">
+  <!-- Original gallery kept as fallback -->
+  <div class="section-wrapper">
+    <h2 class="section-title">Classic Moments</h2>
+    <p class="section-sub">The gentle slideshow</p>
+    <div class="slideshow-container">
+      <div class="slide active" id="slide-0"><img src="photos/photo1.jpg" class="slide-img" /><div class="slide-overlay"><p>"Every moment with my best friend is legendary ✨"</p></div></div>
+      <div class="slide" id="slide-1"><img src="photos/photo2.jpg" class="slide-img" /><div class="slide-overlay"><p>"You make every day brighter 🌸"</p></div></div>
+      <div class="slide" id="slide-2"><img src="photos/photo3.jpg" class="slide-img" /><div class="slide-overlay"><p>"Memories for a lifetime 🕯️"</p></div></div>
+      <div class="slide-dots" id="slide-dots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ SECTION 5.5: SPECIAL DELIVERY -->
+<section id="delivery-section" class="reveal-section">
+  <div class="section-wrapper center-content" style="position:relative; min-height: 40vh; overflow:hidden;">
+    <h2 class="section-title gold-glow">Incoming Delivery 🦇</h2>
+    <p class="section-sub">Look at the sky... tap what falls!</p>
+    
+    <div id="delivery-scene" style="min-height: 250px;">
+      <div id="delivery-bat" class="delivery-bat">🦇</div>
+      <div id="delivery-bag" class="delivery-bag hidden" onclick="openSpecialDelivery()">🛍️</div>
+    </div>
+    
+    <div id="delivery-result" class="hidden">
+      <div class="special-pic-frame">
+        <img src="photos/special.jpg" alt="Ilsa Full Face" class="special-pic" />
+        <div class="special-pic-glow"></div>
+      </div>
+      <h3 class="gold-glow">Absolutely Stunning ✨</h3>
+      <p style="font-size:1.1rem; color:var(--pink-light); font-style:italic;">The most beautiful smile in the entire world.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ SECTION 6: WHY SPECIAL -->
+<section id="special-section" class="reveal-section">
+  <div class="section-wrapper">
+    <h2 class="section-title">Why You Are So Special</h2>
+    <div class="reasons-grid">
+      <div class="reason-card" data-aos="zoom-in"><h3>Bat-Smile</h3><p>It lights up the darkness.</p></div>
+      <div class="reason-card" data-aos="zoom-in"><h3>My Batman</h3><p>Always real, always you.</p></div>
+      <div class="reason-card" data-aos="zoom-in"><h3>Your Strength</h3><p>Quiet strength is powerful.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════ SECTION 6.6: A QUESTION FOR BATMAN -->
+<section id="question-section" class="reveal-section">
+  <div class="section-wrapper center-content" style="min-height: 40vh; position:relative;">
+    <h2 class="section-title">A Serious Question 🤔</h2>
+    <p class="section-sub">Answer honestly, Batman.</p>
+    
+    <div class="question-box">
+      <h3>Am I the greatest best friend you've ever had?</h3>
+      <div class="question-buttons" id="question-buttons-container">
+        <button class="btn-question btn-yes" onclick="answerYes()">Obviously YES! 🦇</button>
+        <button class="btn-question btn-no" id="btn-runaway" onmouseover="runAway(this)" onclick="answerNo()">No</button>
+      </div>
+      <p id="question-result" class="hidden gold-glow" style="font-size:1.5rem; margin-top:20px;"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ SECTION 6.7: THE BATCOMPUTER -->
+<section id="batcomputer-section" class="reveal-section">
+  <div class="section-wrapper center-content">
+    <h2 class="section-title">Encrypted Transmission 📡</h2>
+    <p class="section-sub">Incoming audio protocol...</p>
+    
+    <div class="batcomputer-terminal" onclick="playBatcomputerVoice()">
+      <div class="terminal-header"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span> BATOS v1.0</div>
+      <div class="terminal-body" id="terminal-body">
+        > C:\system\protocols\birthday.exe<br>
+        > Status: Ready.<br>
+        > Tap terminal to decrypt audio...<span class="cursor-blink">|</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ SECTION 7: STORE -->
+<section id="store-section" class="reveal-section">
+  <div class="section-wrapper">
+    <h2 class="section-title gold-glow">🛍️ Heaven Store</h2>
+    <p class="section-sub">Pick anything you want — everything is FREE! 🎁</p>
+
+    <!-- HEAVEN POPUP NOTIFICATION -->
+    <div id="heaven-popup" class="heaven-popup hidden">
+      <div class="hp-content">
+        <h3>🎁 Surprise!</h3>
+        <p>Ilsa, tap on anything you want from the Heaven Store below. Add as many gifts to your wish list as you like, and send them to me!</p>
+        <button class="hp-btn" onclick="closeHeavenPopup()">Okay, let's shop! ✨</button>
+      </div>
+    </div>
+
+    <div class="store-categories">
+      <button class="cat-btn active" onclick="filterStore('all', this)">All</button>
+      <button class="cat-btn" onclick="filterStore('chocolate', this)">🍫 Chocolates</button>
+      <button class="cat-btn" onclick="filterStore('chips', this)">🍟 Snacks</button>
+      <button class="cat-btn" onclick="filterStore('sweets', this)">🍬 Sweets</button>
+      <button class="cat-btn" onclick="filterStore('drinks', this)">🧃 Drinks</button>
+      <button class="cat-btn" onclick="filterStore('icecream', this)">🍦 Ice Cream</button>
+      <button class="cat-btn" onclick="filterStore('food', this)">🍽️ Meals</button>
+    </div>
+
+    <div class="store-grid" id="store-grid">
+      <!-- Shortened for brevity since you wanted generic names -->
+      <div class="store-item" data-cat="chocolate"><h4>Fancy Chocolate</h4><button class="add-btn" onclick="addToCart('Chocolate', this)">Add to Wishes 💖</button></div>
+      <div class="store-item" data-cat="chocolate"><h4>Dark Chocolate</h4><button class="add-btn" onclick="addToCart('Dark Chocolate', this)">Add to Wishes 💖</button></div>
+      
+      <div class="store-item" data-cat="chips"><h4>Potato Chips</h4><button class="add-btn" onclick="addToCart('Potato Chips', this)">Add to Wishes 💖</button></div>
+      <div class="store-item" data-cat="chips"><h4>Spicy Snacks</h4><button class="add-btn" onclick="addToCart('Spicy Snacks', this)">Add to Wishes 💖</button></div>
+      
+      <div class="store-item" data-cat="drinks"><h4>Fruit Juice</h4><button class="add-btn" onclick="addToCart('Fruit Juice', this)">Add to Wishes 💖</button></div>
+      <div class="store-item" data-cat="drinks"><h4>Cold Coffee</h4><button class="add-btn" onclick="addToCart('Cold Coffee', this)">Add to Wishes 💖</button></div>
+      
+      <div class="store-item" data-cat="icecream"><h4>Strawberry Ice Cream</h4><button class="add-btn" onclick="addToCart('Strawberry Ice Cream', this)">Add to Wishes 💖</button></div>
+      <div class="store-item" data-cat="icecream"><h4>Mixed Ice Cream</h4><button class="add-btn" onclick="addToCart('Mixed Ice Cream', this)">Add to Wishes 💖</button></div>
+
+      <div class="store-item" data-cat="food"><h4>Chicken Biryani</h4><button class="add-btn" onclick="addToCart('Chicken Biryani', this)">Add to Wishes 💖</button></div>
+      <div class="store-item" data-cat="food"><h4>Pizza</h4><button class="add-btn" onclick="addToCart('Pizza', this)">Add to Wishes 💖</button></div>
+      <div class="store-item" data-cat="food"><h4>Burger & Fries</h4><button class="add-btn" onclick="addToCart('Burger & Fries', this)">Add to Wishes 💖</button></div>
+      <div class="store-item" data-cat="food"><h4>Creamy Pasta</h4><button class="add-btn" onclick="addToCart('Creamy Pasta', this)">Add to Wishes 💖</button></div>
+    </div>
+
+    <!-- Cart -->
+    <div class="cart-section" id="cart-section" style="display:none;">
+      <h3 class="cart-title">Your Wish Basket 🧺</h3>
+      <ul class="cart-list" id="cart-list"></ul>
+      <button class="send-btn" onclick="sendWishList()" id="send-btn">🎁 Send My Wishes!</button>
+      <p class="send-status" id="send-status"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ SECTION 8: SURPRISE -->
+<section id="surprise-section" class="reveal-section">
+  <div class="section-wrapper center-content">
+    <div class="surprise-glow-wrap">
+      <div class="glowing-heart"><div class="heart-shape">❤</div></div>
+    </div>
+    <blockquote class="surprise-quote">"I'm grateful to God that you were born."</blockquote>
+    <p class="surprise-text">You are not just my best friend.<br/>You are a part of me. 🦇</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ END SCREEN -->
+<section id="final-section">
+  <div class="finale-stars" id="finale-stars"></div>
+  <div class="final-content">
+    <div class="bat-final">🦇</div>
+    <div class="cake-anim">🎂</div>
+    <h1 class="final-title">Once Again,<br/><span>Happy Birthday Ilsa</span> 🎂</h1>
+    <p class="final-sub">May this year bring you everything your heart holds dear 🌸</p>
+    <p class="final-sub">Best friends forever. ❤️🦇</p>
+    <button class="btn-replay" onclick="replayExperience()">↺ Replay the Magic</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ IMMERSIVE VIDEO PLAYER COMPONENT -->
+<!-- This is normally hidden, overrides everything when activated -->
+<div id="video-cinema-overlay" class="cinema-hidden">
+  <div class="cinema-noise"></div>
+  
+  <div class="cinema-track" id="c-track">
+    <div class="c-photo-wrapper" id="cpw-1"><img src="photos/new1.jpg" /></div>
+    <div class="c-photo-wrapper" id="cpw-2"><img src="photos/new2.jpg" /></div>
+    <div class="c-photo-wrapper" id="cpw-3"><img src="photos/new3.jpg" /></div>
+    <div class="c-photo-wrapper" id="cpw-4"><img src="photos/new4.jpg" /></div>
+    <div class="c-photo-wrapper" id="cpw-5"><img src="photos/new5.jpg" /></div>
+  </div>
+
+  <div class="cinema-text-layer">
+    <h1 id="c-lyric" class="c-lyric"></h1>
+  </div>
+
+  <div id="cinema-flash" class="cinema-flash"></div>
+  <div class="cinema-vignette"></div>
+
+  <button class="btn-cinema-close" onclick="closeCinematicEdit()">Close Edit</button>
+</div>
+
+<!-- ══════════════════════════════ THE BAT-SIGNAL OVERLAY -->
+<div id="batsignal-overlay" class="hidden"></div>
+<div id="easter-egg-swarm"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
